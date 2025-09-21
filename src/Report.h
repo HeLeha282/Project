@@ -8,7 +8,7 @@ private:
     int totalFiles = 0;
     int maliciousFiles = 0;
     int errors = 0;
-    long double elapsedTime;
+    double elapsedTime;
 };
 
 #endif // !REPORT_H

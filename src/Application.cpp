@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "Database.h"
+#include "HashCalculator.h"
 #include <iostream>
 
 Report Application::run(const std::string& base, const std::string& log, const std::string& path)
@@ -15,6 +16,10 @@ Report Application::run(const std::string& base, const std::string& log, const s
 	else {
 		std::cout << "verdict = " << verdict;
 	}
+
+
+	HashCalculator hashCalculator;
+	std::cout<<hashCalculator.calcHash("C:\\Users\\Lesha\\Documents\\FPSMonitor.txt");
 
 
 
