@@ -19,8 +19,8 @@ Report Application::run(const std::string& base, const std::string& log, const s
 
 
 	HashCalculator hashCalculator;
-	std::cout<<hashCalculator.calcHash("C:\\Users\\Lesha\\Documents\\FPSMonitor.txt");
-
+	std::string hashfile = hashCalculator.calcHash("C:\\Users\\Lesha\\Documents\\FPSMonitor.txt");
+	report.addFileProcessed();
 
 
 	
