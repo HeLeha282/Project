@@ -3,5 +3,5 @@
 
 class HashCalculator {
 public:
-	std::string calcHash(const std::string& filePath);
+	std::string calcHash(const std::ifstream& ifstream);
 };

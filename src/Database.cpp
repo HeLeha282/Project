@@ -41,7 +41,7 @@ void Database::load(const std::string& csvFilePath)
 	
 }
 
-std::string Database::isMalicious(std::string hash)
+std::string Database::getVerdict(std::string hash)
 {
 	std::string result = "";
 	std::unordered_map<std::string, std::string>::const_iterator it = maliciousHashes.find(hash);

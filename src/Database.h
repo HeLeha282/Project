@@ -5,7 +5,7 @@
 class Database {
 public:
 	void load(const std::string& csvFilePath);
-	std::string isMalicious(std::string hash);
+	std::string getVerdict(std::string hash);
 private:
 	std::unordered_map<std::string, std::string> maliciousHashes;
 };

@@ -2,6 +2,7 @@
 #include "Database.h"
 #include "HashCalculator.h"
 #include <iostream>
+#include <fstream>
 
 Report Application::run(const std::string& base, const std::string& log, const std::string& path)
 {
@@ -19,9 +20,16 @@ Report Application::run(const std::string& base, const std::string& log, const s
 
 
 	HashCalculator hashCalculator;
-	std::string hashfile = hashCalculator.calcHash("C:\\Users\\Lesha\\Documents\\FPSMonitor.txt");
+	std::string filePath = "C:\\Users\\Lesha\\Documents\\FPSMonitor.txt";
+	std::ifstream ifstream(filePath, std::ios::binary);
+	std::string hash = hashCalculator.calcHash(ifstream);
+	std::string verdict = database.getVerdict(hash);
 	report.addFileProcessed();
+	if (verdict != "") {
+		report.addInfected();
 
+	}
+	
 
 	
 	return report;
