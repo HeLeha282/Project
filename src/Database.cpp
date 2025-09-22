@@ -1,19 +1,36 @@
 #include "Database.h"
 #include <fstream>
+#include <filesystem>
 #include <iostream>
 #include "StringUtils.h"
 #include <regex>
+Database::Database(const std::string& csvFilePath)
+{
+	load(csvFilePath);
+}
+
 void Database::load(const std::string& csvFilePath)
 {
-	std::ifstream inf;
-	inf.open(csvFilePath);
-	//if (!inf) {
-	//	std::cout << "ошибка потока";
-	//	
-	//}
+	//std::cout << std::filesystem::current_path()<<std::endl;
+	if (!std::filesystem::exists(csvFilePath)) {
+		throw std::runtime_error("CSV файл не существует: " + csvFilePath);
+	}
+
+	// Проверка что это обычный файл
+	if (!std::filesystem::is_regular_file(csvFilePath)) {
+		throw std::runtime_error("Путь не является файлом: " + csvFilePath);
+	}
+
+	std::ifstream inf(csvFilePath);
+
 	if (!inf.is_open()) {
-		//std::cout << "ошибка чтения файла";
-		throw std::runtime_error("ошибка чтения CSV файла " + csvFilePath);
+		// Проверяем код ошибки для более точного сообщения
+		if (errno == EACCES) {
+			throw std::runtime_error("Недостаточно прав для чтения файла: " + csvFilePath);
+		}
+		else {
+			throw std::runtime_error("Ошибка открытия файла: " + csvFilePath);
+		}
 	}
 	std::string line;
 	size_t delimiterPos;
@@ -21,7 +38,7 @@ void Database::load(const std::string& csvFilePath)
 	std::string verdict;
 	while (std::getline(inf, line)) {
 		if (line.empty()) continue; // Пропускаем пустые строки
-		std::cout << line << " sdada" << std::endl;
+		//std::cout << line << " sdada" << std::endl;
 		delimiterPos = line.find(';');
 		if (delimiterPos == std::string::npos) {
 			throw std::runtime_error("Некорректный формат CSV файла: " + line);

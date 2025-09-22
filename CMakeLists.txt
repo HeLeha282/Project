@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 4.1.1 FATAL_ERROR)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 if(WIN32)
     message(STATUS "Building for Windows")
 else()
@@ -9,7 +12,7 @@ endif()
 
 project(scaner)#имя проекта
 
-add_executable(scanner_exe src/testTask.cpp)#имя исполняемого файла
+add_executable(scanner_exe src/testTask.cpp )#имя исполняемого файла
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
@@ -52,7 +55,7 @@ target_link_libraries(scanner_exe PRIVATE scanner_library)
 
 ##set(CRYPTOPP_LIB_PATH "C:\\Users\\Lesha\\Desktop\\TestTaskKaspersky\\Project\\build\\_deps\\cryptopp-src\\x64\\Output\\Release\\cryptlib.lib")
 ##target_link_libraries(scanner_library PRIVATE ${CRYPTOPP_LIB_PATH})
-
+#[[==
 #-------------------------------------------------------
 include(ExternalProject)
 
@@ -113,7 +116,7 @@ endif()
 #target_link_libraries(scanner_library PRIVATE CryptoPP::CryptoPP)
 # и она будет знать, откуда брать и библиотеки, и заголовки.
 
-
+==]]
 #-------------------------------------------------------
 # Включаем модуль ExternalProject
 #include(ExternalProject)
@@ -150,3 +153,9 @@ endif()
 
 
 
+add_custom_command(TARGET scanner_exe
+                   POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy
+                           "${CMAKE_CURRENT_SOURCE_DIR}/src/text.csv"
+                           $<TARGET_FILE_DIR:scanner_exe>/text.csv
+                   COMMENT "Copying txt file")

@@ -1,22 +1,25 @@
 #include "Application.h"
 #include "Database.h"
 #include "HashCalculator.h"
+#include "Logger.h"
 #include <iostream>
 #include <fstream>
 
 Report Application::run(const std::string& base, const std::string& log, const std::string& path)
 {
 	Report report;
-	Database database;
-	database.load(base);
-	std::string verdict = database.isMalicious("d6204ffeb36d2320e52f1d551cfa370");
-	if (verdict.empty())
-	{
-		std::cout << "verdict empty àâàûïïððï";
-	}
-	else {
-		std::cout << "verdict = " << verdict;
-	}
+	Database database(base);
+	Logger logger(log);
+
+	//database.load("C:\\Users\\Lesha\\Desktop\\TestTaskKaspersky\\Project\\build\\text.csv");
+	//std::string verdict = database.getVerdict("ac6204ffeb36d2320e52f1d551cfa370");
+	//if (verdict.empty())
+	//{
+	//	std::cout << "verdict empty àâàûïïððï" << '\n';
+	//}
+	//else {
+	//	std::cout << "verdict = " << verdict << '\n';
+	//}
 
 
 	HashCalculator hashCalculator;
@@ -25,11 +28,10 @@ Report Application::run(const std::string& base, const std::string& log, const s
 	std::string hash = hashCalculator.calcHash(ifstream);
 	std::string verdict = database.getVerdict(hash);
 	report.addFileProcessed();
-	if (verdict != "") {
+	if (!verdict.empty()) {
 		report.addInfected();
-
+		logger.logDetection(filePath, hash, verdict);
 	}
-	
 
 	
 	return report;

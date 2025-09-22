@@ -8,50 +8,20 @@ private:
     std::ofstream log_file;
 
 public:
-    Logger(const std::string& filename) {
-        log_file.open(filename);
-        if (!log_file.is_open()) {
-            throw std::runtime_error("Cannot open log file: " + filename);
-        }
-    }
+    Logger(const std::string& filename);
 
     void logDetection(const std::string& file_path, const std::string& hash,
-        const std::string& verdict) {
-        auto now = std::chrono::system_clock::now();
-        auto time_t = std::chrono::system_clock::to_time_t(now);
+        const std::string& verdict);
+    
+    //ѕока что не знаю, будет это реализованно через параметр (если есть разные причины почему файл не открылс€). 
+    // »ли без параметра (текст константа будет в методе)
+    void logError(const std::string& file_path, const std::string& error);
 
-        log_file << "[DETECTED] "
-            << std::localtime(&time_t) << " | "
-            << "File: " << file_path << " | "
-            << "Hash: " << hash << " | "
-            << "Verdict: " << verdict
-            << std::endl;
-    }
 
-    void logError(const std::string& file_path, const std::string& error) {
-        auto now = std::chrono::system_clock::now();
-        auto time_t = std::chrono::system_clock::to_time_t(now);
+    //могу вывести какую то служебную информацию
+    //[INFO] 2024-01-15 14:30:25.123 | Scan started: path="C:\target_folder" base="malware_db.csv"
+    //[INFO] 2024 - 01 - 15 14:30 : 25.124 | Threads : 4 | Recursive : true
+    void logInfo(const std::string& message);
 
-        log_file << "[ERROR] "
-            << std::localtime(&time_t)  << " | "
-            << "File: " << file_path << " | "
-            << "Error: " << error
-            << std::endl;
-    }
-
-    void logInfo(const std::string& message) {
-        auto now = std::chrono::system_clock::now();
-        auto time_t = std::chrono::system_clock::to_time_t(now);
-
-        log_file << "[INFO] "
-            << std::localtime(&time_t) << " | "
-            << message
-            << std::endl;
-    }
-
-    ~Logger() {
-        if (log_file.is_open()) {
-            log_file.close();
-        }
-    }
+    ~Logger();
 };

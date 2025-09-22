@@ -10,21 +10,21 @@ int main(int argc, char* argv[]) {
 	for (int i = 1; i < argc; i++) {
 		std::string arg = argv[i]; // Преобразуем в std::string
 		if (arg == "--base") {
-			std::cout << arg << std::endl;
+			//std::cout << arg << std::endl;
 			if (i + 1 < argc) {
 				hash_base_path = argv[i + 1];
 				i++;
 			}
 		}
 		else if (arg == "--log") {
-			std::cout << arg << std::endl;
+			//std::cout << arg << std::endl;
 			if (i + 1 < argc) {
 				log_file = argv[i + 1];
 				i++;
 			}
 		}
 		else if (arg == "--path") {
-			std::cout << arg << std::endl;
+			//std::cout << arg << std::endl;
 			if (i + 1 < argc) {
 				scan_dir_path = argv[i + 1];
 				i++;
@@ -32,16 +32,23 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	std::cout << hash_base_path << '\n';
-	std::cout << log_file << '\n';
-	std::cout << scan_dir_path << '\n';
+	//std::cout << hash_base_path << '\n';
+	//std::cout << log_file << '\n';
+	//std::cout << scan_dir_path << '\n';
 
 	try {
+		std::cout << "Utility started working..." << std::endl;
 		Application app;
-		app.run(hash_base_path, log_file, scan_dir_path);
+		Report report = app.run(hash_base_path, log_file, scan_dir_path);
+
+		
+		report.printReport();
+
+		return 0;
 	}
-	catch (const std::runtime_error& e) {
-		std::cout << e.what() << '\n';
+	catch (const std::exception& e) {
+		std::cerr << "Fatal error: " << e.what() << '\n';
+		return 1;
 	}
 }
 

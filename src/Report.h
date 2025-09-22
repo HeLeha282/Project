@@ -7,11 +7,13 @@ public:
     void addInfected();
     void addError();
     void setElapsedTime(double seconds);
+    void printReport();
+
 private:
     int totalFiles = 0;
     int infectedFiles = 0;
     int errors = 0;
-    double elapsedTime;
+    double elapsedTime = 0.0;
 };
 
 #endif // !REPORT_H
