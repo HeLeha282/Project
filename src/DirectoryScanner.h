@@ -1,0 +1,19 @@
+#pragma 
+#include "Database.h"
+#include "Logger.h"
+#include "Report.h"
+#include <string>
+class DirectoryScanner {
+public:
+	DirectoryScanner(Database& base, Logger& logger, Report& report);
+	void scan(std::string path);
+	//void processFile(std::string filepath);
+
+private:
+    Database& database;
+    Logger& logger;
+    Report& report;
+
+    void scanDirectory(const std::filesystem::path& directory);
+    //void processFile(const std::filesystem::path& filePath);
+};

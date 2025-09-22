@@ -3,6 +3,7 @@
 #include "HashCalculator.h"
 #include "Logger.h"
 #include <iostream>
+#include "DirectoryScanner.h"
 #include <fstream>
 
 Report Application::run(const std::string& base, const std::string& log, const std::string& path)
@@ -33,7 +34,10 @@ Report Application::run(const std::string& base, const std::string& log, const s
 		logger.logDetection(filePath, hash, verdict);
 	}
 
-	
+	DirectoryScanner scanner(database, logger, report);
+	scanner.scan("C:\\Users\\Lesha\\Desktop\\TestTaskKaspersky\\Project\\src");
+
+
 	return report;
 }
 

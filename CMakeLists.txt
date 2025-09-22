@@ -21,9 +21,9 @@ src/Report.cpp src/StringUtils.cpp src/Application.h
     src/Database.h
     src/HashCalculator.cpp
     src/Logger.cpp
-    src/FileScanner.cpp
+    src/DirectoryScanner.cpp
     src/HashCalculator.h
-    src/FileScanner.h
+    src/DirectoryScanner.h
     src/Logger.h
     src/Report.h
     src/StringUtils.h)
@@ -33,7 +33,7 @@ source_group("Header Files" FILES
     src/Application.h
     src/Database.h
     src/HashCalculator.h
-    src/FileScanner.h
+    src/DirectoryScanner.h
     src/Logger.h
     src/Report.h
     src/StringUtils.h
