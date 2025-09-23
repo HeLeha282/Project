@@ -18,6 +18,7 @@ void FileHandler::processFile(const std::string& filePath)
         return;
     }
     std::string hash = HashCalculator::calcHash(file);
+    std::cout << filePath + "\n" + hash + "\n" + "----------------------------------------------------------------------------------------------------------------------------"<<std::endl;
     std::string verdict = database.getVerdict(hash);
     if (verdict != "") {
         report.addInfected();

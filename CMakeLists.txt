@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 4.1.1 FATAL_ERROR)
 
+
+
+
+
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -41,8 +46,12 @@ source_group("Header Files" FILES
     src/Report.h
     src/StringUtils.h
 )
-
+# Находим установленный OpenSSL
+find_package(OpenSSL REQUIRED)
+# Линкуем OpenSSL с нашей библиотекой
+target_link_libraries(scanner_library OpenSSL::Crypto)
 target_link_libraries(scanner_exe PRIVATE scanner_library)
+
 
 #-------------------------------------------------------
 ##include(FetchContent)

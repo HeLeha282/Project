@@ -1,42 +1,35 @@
 #include "HashCalculator.h"
-//#include <md5.h>
-//#include <files.h>
-//#include <hex.h>
-std::string HashCalculator::calcHash(const std::ifstream& ifstream)
-{
-    return "ac6204ffeb36d2320e52f1d551cfa370";
-    //try {
-    //    CryptoPP::MD5 hash;
-    //    std::string digest;
+#include <openssl/md5.h>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <stdexcept>
 
-    //    std::ifstream file(filePath, std::ios::binary);
-    //    if (!file) {
-    //        throw std::runtime_error("Cannot open file: " + filePath);
-    //    }
+std::string HashCalculator::calcHash(std::ifstream& file) {
+    unsigned char c[MD5_DIGEST_LENGTH];
+    MD5_CTX mdContext;
 
-    //    // Читаем файл блоками
-    //    const size_t bufferSize = 8192;
-    //    char buffer[bufferSize];
 
-    //    while (file.read(buffer, bufferSize) || file.gcount() > 0) {
-    //        hash.Update((const CryptoPP::byte*)buffer, file.gcount());
-    //    }
 
-    //    // Получаем хэш
-    //    digest.resize(hash.DigestSize());
-    //    hash.Final((CryptoPP::byte*)&digest[0]);
+    MD5_Init(&mdContext);
 
-    //    // Конвертируем в hex строку
-    //    std::string hexDigest;
-    //    CryptoPP::HexEncoder encoder;
-    //    encoder.Attach(new CryptoPP::StringSink(hexDigest));
-    //    encoder.Put((const CryptoPP::byte*)digest.data(), digest.size());
-    //    encoder.MessageEnd();
+    // Читаем файл блоками по 4KB
+    const size_t bufferSize = 4096;
+    char buffer[bufferSize];
 
-    //    return hexDigest;
+    while (file.good()) {
+        file.read(buffer, bufferSize);
+        MD5_Update(&mdContext, buffer, file.gcount());
+    }
 
-    //}
-    //catch (const CryptoPP::Exception& e) {
-    //    throw std::runtime_error("CryptoPP error: " + std::string(e.what()));
-    //}
+    MD5_Final(c, &mdContext);
+
+    // Переводим байты в hex-строку
+    std::ostringstream oss;
+    oss << std::hex << std::setfill('0');
+    for (int i = 0; i < MD5_DIGEST_LENGTH; ++i) {
+        oss << std::setw(2) << static_cast<int>(c[i]);
+    }
+
+    return oss.str();
 }
