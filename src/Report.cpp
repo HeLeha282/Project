@@ -12,6 +12,11 @@ void Report::addInfected()
 	infectedFiles += 1;
 }
 
+void Report::addHealthy()
+{
+	healthyFiles += 1;
+}
+
 void Report::addError()
 {
 	errors += 1;
@@ -27,8 +32,8 @@ void Report::printReport()
 	std::cout << "\n=== SCAN REPORT ===\n";
 	std::cout << "Total files processed: " << totalFiles << "\n";
 	std::cout << "Infected files found: " << infectedFiles << "\n";
+	std::cout << "Healthy files found: " << healthyFiles << "\n";
 	std::cout << "Errors encountered: " << errors << "\n";
-
 	std::cout << "Time elapsed: " << std::fixed << std::setprecision(2)
 		<< elapsedTime << " seconds\n";
 }

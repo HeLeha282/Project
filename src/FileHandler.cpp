@@ -8,6 +8,7 @@ FileHandler::FileHandler(Database& base, Logger& logger, Report& report) : datab
 
 void FileHandler::processFile(const std::string& filePath)
 {
+    //Если не получится открыть то и хеш не посчитаем
     report.addFileProcessed();//добавляем "всего обработнных файлов"
     std::ifstream file(filePath, std::ios::binary);
     if (!file.is_open()) {
@@ -23,6 +24,8 @@ void FileHandler::processFile(const std::string& filePath)
     if (verdict != "") {
         report.addInfected();
         logger.logDetection(filePath, hash, verdict);
+    }else{
+        report.addHealthy();
     }
     logger.logInfo("есть права на чтение файла: " + filePath);
 }

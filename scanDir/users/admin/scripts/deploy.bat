@@ -1,0 +1,3 @@
+@echo off 
+echo Deploying application... 
+xcopy app.exe C:\programs\ /Y 
