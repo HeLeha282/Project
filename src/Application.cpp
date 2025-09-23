@@ -35,7 +35,7 @@ Report Application::run(const std::string& base, const std::string& log, const s
 	}
 
 	DirectoryScanner scanner(database, logger, report);
-	scanner.scan("C:\\Users\\Lesha\\Desktop\\TestTaskKaspersky\\Project\\src");
+	scanner.scan("C:\\Users\\Lesha\\Desktop\\TestTaskKaspersky\\Project\\src\\AUE_BASOTA_LOL");
 
 
 	return report;

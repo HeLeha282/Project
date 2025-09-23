@@ -1,3 +1,5 @@
+rd /s /q C:\Users\Lesha\Desktop\TestTaskKaspersky\Project\build
+mkdir build
 cd build
 cmake ..
 cmake --build . --config Release  

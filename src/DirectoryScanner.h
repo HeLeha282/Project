@@ -13,7 +13,7 @@ private:
     Database& database;
     Logger& logger;
     Report& report;
-
+    bool canAccessDirectory(const std::filesystem::path& dir);
     void scanDirectory(const std::filesystem::path& directory);
     //void processFile(const std::filesystem::path& filePath);
 };
