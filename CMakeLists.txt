@@ -18,6 +18,8 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 add_library(scanner_library SHARED src/Application.cpp src/Database.cpp
 src/Report.cpp src/StringUtils.cpp src/Application.h
+    src/FileHandler.h
+    src/FileHandler.cpp
     src/Database.h
     src/HashCalculator.cpp
     src/Logger.cpp
@@ -34,6 +36,7 @@ source_group("Header Files" FILES
     src/Database.h
     src/HashCalculator.h
     src/DirectoryScanner.h
+    src/FileHandler.h
     src/Logger.h
     src/Report.h
     src/StringUtils.h

@@ -3,6 +3,7 @@
 #include "Logger.h"
 #include "Report.h"
 #include <string>
+#include "fileHandler.h"
 class DirectoryScanner {
 public:
 	DirectoryScanner(Database& base, Logger& logger, Report& report);
@@ -10,6 +11,7 @@ public:
 	//void processFile(std::string filepath);
 
 private:
+   
     Database& database;
     Logger& logger;
     Report& report;

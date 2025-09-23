@@ -29,6 +29,6 @@ void Report::printReport()
 	std::cout << "Infected files found: " << infectedFiles << "\n";
 	std::cout << "Errors encountered: " << errors << "\n";
 
-	std::cout << "Time elapsed: " << std::fixed << std::setprecision(1)
+	std::cout << "Time elapsed: " << std::fixed << std::setprecision(2)
 		<< elapsedTime << " seconds\n";
 }

@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "Application.h"
+#include <chrono>
 
 int main(int argc, char* argv[]) {
 	setlocale(LC_ALL, "ru_RU");
@@ -37,11 +38,16 @@ int main(int argc, char* argv[]) {
 	//std::cout << scan_dir_path << '\n';
 
 	try {
+		auto start = std::chrono::steady_clock::now();
 		std::cout << "Utility started working..." << std::endl;
 		Application app;
 		Report report = app.run(hash_base_path, log_file, scan_dir_path);
 
-		
+		auto end = std::chrono::steady_clock::now();
+
+		std::chrono::duration<double> elapsed = end - start;
+		double duration_sec = elapsed.count();
+		report.setElapsedTime(duration_sec);
 		report.printReport();
 
 		return 0;

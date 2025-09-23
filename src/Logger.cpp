@@ -24,14 +24,13 @@ void Logger::logDetection(const std::string& file_path, const std::string& hash,
         << std::endl;
 }
 
-void Logger::logError(const std::string& file_path, const std::string& error)
+void Logger::logError(const std::string& error)
 {
     auto now = std::chrono::system_clock::now();
     auto time_t = std::chrono::system_clock::to_time_t(now);
 
     log_file << "[ERROR] "
         << std::localtime(&time_t) << " | "
-        << "File: " << file_path << " | "
         << "Error: " << error
         << std::endl;
 }
@@ -49,6 +48,7 @@ void Logger::logInfo(const std::string& message)
 
 Logger::~Logger()
 {
+    //std::cout << "Logger Destruct"<< std::endl;
     if (log_file.is_open()) {
         log_file.close();
     }

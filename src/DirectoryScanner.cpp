@@ -3,7 +3,10 @@
 #include <filesystem>
 
 
+
 DirectoryScanner::DirectoryScanner(Database& base, Logger& logger, Report& report) : database(base), logger(logger), report(report) {}//в списке инициализации потому что ссылки
+
+
 
 void DirectoryScanner::scan(std::string path)
 {
@@ -19,10 +22,9 @@ void DirectoryScanner::scan(std::string path)
         }
 
         scanDirectory(rootPath);
-
     }
-    catch (const std::filesystem::filesystem_error& e) {
-        logger.logError(path, std::string(e.what()));
+    catch (const std::runtime_error& e) {
+        logger.logError(std::string(e.what()));
         throw;//это ловит main
     }
 }
@@ -33,7 +35,7 @@ bool DirectoryScanner::canAccessDirectory(const std::filesystem::path& dir)
     std::filesystem::directory_iterator it(dir, ec);
     if (ec) {
         // Ошибка доступа
-        std::cerr << "Нет прав доступа к " << dir << ": " << ec.message() << std::endl;
+        //std::cerr << "Нет прав доступа к " << dir << ": " << ec.message() << std::endl;
         return false;
     }
     return true;
@@ -41,37 +43,22 @@ bool DirectoryScanner::canAccessDirectory(const std::filesystem::path& dir)
 
 void DirectoryScanner::scanDirectory(const std::filesystem::path& directory)
 {
-
+    FileHandler fileHandler(database, logger, report);
     auto options = std::filesystem::directory_options::skip_permission_denied;
 
     for (const auto& entry : std::filesystem::recursive_directory_iterator(directory, options)) {
-        std::cout << entry.path().filename().string() << std::endl;
+        //std::cout << entry.path().filename().string() << std::endl;
 
-        if (entry.is_regular_file()) {
-            std::cout << entry.path().filename().string() << std::endl;//для файлов второй раз вывожу
-
-            std::ifstream inf(entry.path());
-            if (inf.is_open()) {
-                std::string str;
-                inf >> str;
-                if (inf.bad()) {
-                    std::cout << "с потоком проблемка" << std::endl;
-                }
-                inf.close();
-                std::cout << "поток закрыт" << std::endl;
-            }
-            else {
-                std::cout << "Не удалось открыть файл" << std::endl;
-            }
+        if (entry.is_regular_file()) {//fileHandler
+            //std::cout << "Это файл" << std::endl;//для файлов второй раз вывожу
+            fileHandler.processFile(entry.path().string());
         }
         else {
-            if (canAccessDirectory(entry.path())) {
-                std::cout << "Доступ есть" << std::endl;
-            }
-            else {
-                std::cout << "Доступа нет" << std::endl;
+            if (!canAccessDirectory(entry.path())) {
+                //std::cout << "Доступа нет" << std::endl;
+                logger.logError("Нет доступа к папке " + entry.path().string());
             }
         }
-        std::cout << "--------------------------------------" << std::endl;
+        //std::cout << "--------------------------------------" << std::endl;
     }
 }
