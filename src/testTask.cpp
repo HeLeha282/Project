@@ -33,6 +33,12 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
+	if (hash_base_path == "hash_base_path" || log_file == "log_file" || scan_dir_path == "scan_dir_path") {
+		std::cerr << "Usage: " << argv[0] << " --base <hash_db> --log <log_file> --path <scan_dir>\n";
+		std::cerr << "Example: scanner.exe --base hashes.csv --log scan.log --path C:\\Windows\n";
+		return 1;
+	}
+
 	//std::cout << hash_base_path << '\n';
 	//std::cout << log_file << '\n';
 	//std::cout << scan_dir_path << '\n';

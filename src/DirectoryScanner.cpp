@@ -21,6 +21,9 @@ void DirectoryScanner::scan(std::string path)
             throw std::runtime_error("Path is not a directory: " + path);
         }
 
+        if (!canAccessDirectory(rootPath)) {
+            throw std::runtime_error("Нет доступа для чтения корневой директории: " + path);
+        }
         scanDirectory(rootPath);
     }
     catch (const std::runtime_error& e) {
@@ -41,8 +44,8 @@ bool DirectoryScanner::canAccessDirectory(const std::filesystem::path& dir)
 
 void DirectoryScanner::scanDirectory(const std::filesystem::path& directory)
 {
-    FileHandler fileHandler(database, logger, report);
     auto options = std::filesystem::directory_options::skip_permission_denied;
+    std::vector<std::thread> threads;
 
     const size_t maxThreads = 2;
     std::atomic<size_t> activeThreads{ 0 };

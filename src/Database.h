@@ -2,8 +2,12 @@
 #define DATABASE_H
 #include <unordered_map>
 #include <string>
-
-class Database{
+#ifdef SCANNER_LIBRARY_EXPORTS
+#define SCANNER_API __declspec(dllexport)
+#else
+#define SCANNER_API __declspec(dllimport)
+#endif
+class SCANNER_API Database{
 public:
 	Database(const std::string& csvFilePath);
 	std::string getVerdict(std::string hash);

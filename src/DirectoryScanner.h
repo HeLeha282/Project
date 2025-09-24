@@ -11,7 +11,7 @@ public:
 	void scan(std::string path);
 
 private:
-    std::vector<std::thread> threads;
+    
     Database& database;
     Logger& logger;
     Report& report;
