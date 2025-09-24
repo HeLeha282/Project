@@ -52,7 +52,6 @@ void DirectoryScanner::scanDirectory(const std::filesystem::path& directory)
     for (const auto& entry : std::filesystem::recursive_directory_iterator(directory, options)) {
 
         if (entry.is_regular_file()) {
-            //fileHandler.processFile(entry.path().string());
             std::unique_lock<std::mutex> lock(cvMutex);
             cv.wait(lock, [&]() { return activeThreads < maxThreads; });
 
@@ -71,11 +70,7 @@ void DirectoryScanner::scanDirectory(const std::filesystem::path& directory)
             activeThreads--;
             cv.notify_one(); // Разблокируем ожидающие потоки
             });
-            
 
-       
-            //std::thread t(&FileHandler::processFile, fileHandler, entry.path().string());
-            //t.join();
         }
         else {
             if (!canAccessDirectory(entry.path())) {
@@ -89,25 +84,3 @@ void DirectoryScanner::scanDirectory(const std::filesystem::path& directory)
 }
 
 
-/*
-for (const auto& entry : std::filesystem::recursive_directory_iterator(directory, options)) {
-    if (entry.is_regular_file()) {
-        // Ждем, если достигли максимума потоков
-        
-
-        // Захватываем путь ПО ЗНАЧЕНИЮ (копируем строку)
-        threads.emplace_back([this, path = entry.path().string(), &activeThreads, &cv]() {
-            try {
-                FileHandler fileHandler(database, logger, report);
-                fileHandler.processFile(path);
-            }
-            catch (const std::exception& e) {
-                // Логируем ошибку, но не прерываем другие потоки
-                logger.logError("Ошибка обработки файла " + path + ": " + e.what());
-            }
-
-            // Уменьшаем счетчик активных потоков
-            activeThreads--;
-            cv.notify_one(); // Разблокируем ожидающие потоки
-            });
-            */

@@ -11,8 +11,6 @@
 
 Report Application::run(const std::string& base, const std::string& log, const std::string& path)
 {
-
-	//std::this_thread::sleep_for(std::chrono::duration<double>(seconds));
 	Report report;
 	Database database(base);
 	Logger logger(log);

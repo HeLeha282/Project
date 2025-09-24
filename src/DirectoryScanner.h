@@ -9,7 +9,6 @@ class DirectoryScanner {
 public:
 	DirectoryScanner(Database& base, Logger& logger, Report& report);
 	void scan(std::string path);
-	//void processFile(std::string filepath);
 
 private:
     std::vector<std::thread> threads;
@@ -18,7 +17,6 @@ private:
     Report& report;
     bool canAccessDirectory(const std::filesystem::path& dir);
     void scanDirectory(const std::filesystem::path& directory);
-    //void processFile(const std::filesystem::path& filePath);
 };
 
 
