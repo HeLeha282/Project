@@ -11,7 +11,6 @@ Database::Database(const std::string& csvFilePath)
 
 void Database::load(const std::string& csvFilePath)
 {
-	//std::cout << std::filesystem::current_path()<<std::endl;
 	if (!std::filesystem::exists(csvFilePath)) {
 		throw std::runtime_error("CSV файл не существует: " + csvFilePath);
 	}
@@ -38,7 +37,6 @@ void Database::load(const std::string& csvFilePath)
 	std::string verdict;
 	while (std::getline(inf, line)) {
 		if (line.empty()) continue; // Пропускаем пустые строки
-		//std::cout << line << " sdada" << std::endl;
 		delimiterPos = line.find(';');
 		if (delimiterPos == std::string::npos) {
 			throw std::runtime_error("Некорректный формат CSV файла: " + line);
@@ -48,14 +46,6 @@ void Database::load(const std::string& csvFilePath)
 		verdict = StringUtils::trim(line.substr(delimiterPos + 1));
 		maliciousHashes[hash] = verdict;
 	}
-
-	/*
-	for (const std::pair<std::string, std::string> pair : maliciousHashes) {
-		std::cout << pair.first << " -> " << pair.second <<std::endl;
-	}
-	*/
-
-	
 }
 
 std::string Database::getVerdict(std::string hash)

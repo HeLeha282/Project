@@ -3,23 +3,27 @@
 #include "fstream"
 #include <iostream>
 #include "HashCalculator.h"
+#include <thread>
 
 FileHandler::FileHandler(Database& base, Logger& logger, Report& report) : database(base), logger(logger), report(report) {}
 
-void FileHandler::processFile(const std::string& filePath)
+void FileHandler::processFile(const std::string& filePath, std::mutex& rofl_m)
 {
+   
     //Если не получится открыть то и хеш не посчитаем
     report.addFileProcessed();//добавляем "всего обработнных файлов"
     std::ifstream file(filePath, std::ios::binary);
     if (!file.is_open()) {
-        //std::cerr << "Нет прав на чтение файла: " << filePath << std::endl;
         report.addError();//добоавляем "ошибка доступа" 
         
         logger.logError("Нет прав на чтение файла: " + filePath);
         return;
     }
     std::string hash = HashCalculator::calcHash(file);
-    std::cout << filePath + "\n" + hash + "\n" + "----------------------------------------------------------------------------------------------------------------------------"<<std::endl;
+    rofl_m.lock();
+    std::cout << std::this_thread::get_id() << std::endl;
+    std::cout << filePath + "\n" + hash + "\n" + "-----------------------------------------------------------------------------------------------"<<std::endl;
+    rofl_m.unlock();
     std::string verdict = database.getVerdict(hash);
     if (verdict != "") {
         report.addInfected();
@@ -27,5 +31,4 @@ void FileHandler::processFile(const std::string& filePath)
     }else{
         report.addHealthy();
     }
-    logger.logInfo("есть права на чтение файла: " + filePath);
 }

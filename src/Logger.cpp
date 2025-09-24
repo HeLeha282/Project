@@ -1,6 +1,7 @@
 #include "Logger.h"
 #include <stdexcept>
 #include <iostream>
+#include <iomanip>
 
 Logger::Logger(const std::string& filename)
 {
@@ -12,43 +13,71 @@ Logger::Logger(const std::string& filename)
 
 void Logger::logDetection(const std::string& file_path, const std::string& hash, const std::string& verdict)
 {
-    
-    auto now = std::chrono::system_clock::now();
+    std::lock_guard<std::mutex> lock(log_mutex);
+    auto now = std::chrono::system_clock::now();//не потокобезопасно
     auto time_t = std::chrono::system_clock::to_time_t(now);
 
-    log_file << "[DETECTED] "
-        << std::localtime(&time_t) << " | "
-        << "File: " << file_path << " | "
-        << "Hash: " << hash << " | "
-        << "Verdict: " << verdict
-        << std::endl;
+    char buffer[80];
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&time_t));
+
+    try {
+        log_file << "[DETECTED] "
+            << buffer << " | "
+            << "File: " << file_path << " | "
+            << "Hash: " << hash << " | "
+            << "Verdict: " << verdict
+            << std::endl;
+    }
+    catch (const std::ios_base::failure& e) {
+        // Диск переполнен, нет прав записи и т.д.
+        throw std::ios_base::failure("Ошибка записи в лог: " + std::string(e.what()));
+    }
 }
 
 void Logger::logError(const std::string& error)
 {
+    std::lock_guard<std::mutex> lock(log_mutex);
     auto now = std::chrono::system_clock::now();
     auto time_t = std::chrono::system_clock::to_time_t(now);
 
+    char buffer[80];
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&time_t));
+
+    try {
     log_file << "[ERROR] "
-        << std::localtime(&time_t) << " | "
+        << buffer << " | "
         << "Error: " << error
         << std::endl;
+}
+    catch (const std::ios_base::failure& e) {
+        // Диск переполнен, нет прав записи и т.д.
+        throw std::ios_base::failure("Ошибка записи в лог: " + std::string(e.what()));
+    }
 }
 
 void Logger::logInfo(const std::string& message)
 {
+    std::lock_guard<std::mutex> lock(log_mutex);
     auto now = std::chrono::system_clock::now();
     auto time_t = std::chrono::system_clock::to_time_t(now);
 
+    char buffer[80];
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&time_t));
+
+    try {
     log_file << "[INFO] "
-        << std::localtime(&time_t) << " | "
+        << buffer << " | "
         << message
         << std::endl;
+}
+    catch (const std::ios_base::failure& e) {
+        // Диск переполнен, нет прав записи и т.д.
+        throw std::ios_base::failure("Ошибка записи в лог: " + std::string(e.what()));
+    }
 }
 
 Logger::~Logger()
 {
-    //std::cout << "Logger Destruct"<< std::endl;
     if (log_file.is_open()) {
         log_file.close();
     }

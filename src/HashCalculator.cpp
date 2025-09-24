@@ -9,8 +9,6 @@ std::string HashCalculator::calcHash(std::ifstream& file) {
     unsigned char c[MD5_DIGEST_LENGTH];
     MD5_CTX mdContext;
 
-
-
     MD5_Init(&mdContext);
 
     // Читаем файл блоками по 4KB
@@ -29,6 +27,10 @@ std::string HashCalculator::calcHash(std::ifstream& file) {
     oss << std::hex << std::setfill('0');
     for (int i = 0; i < MD5_DIGEST_LENGTH; ++i) {
         oss << std::setw(2) << static_cast<int>(c[i]);
+    }
+
+    if (file.bad()) {//надо будет доработать
+        throw std::runtime_error("Ошибка чтения файла при вычислении хеша");
     }
 
     return oss.str();

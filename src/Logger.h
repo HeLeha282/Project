@@ -1,11 +1,14 @@
-#pragma once
+#ifndef LOGGER_H
+#define LOGGER_H
 #include <string>
 #include <fstream>
 #include <chrono>
+#include <mutex>
 
 class Logger {
 private:
     std::ofstream log_file;
+    std::mutex log_mutex;
 
 public:
     Logger(const std::string& filename);
@@ -25,3 +28,5 @@ public:
 
     ~Logger();
 };
+
+#endif // !LOGGER_H

@@ -12,15 +12,14 @@
 Report Application::run(const std::string& base, const std::string& log, const std::string& path)
 {
 
-	double seconds = 1.5; // 1.5 секунды
-	std::this_thread::sleep_for(std::chrono::duration<double>(seconds));
+	//std::this_thread::sleep_for(std::chrono::duration<double>(seconds));
 	Report report;
 	Database database(base);
 	Logger logger(log);
 	DirectoryScanner scanner(database, logger, report);
 	scanner.scan(path);
 
-	return report;
+	return report;  // здесь компилятор применяет RVO и возвращает через переопределенный конструктор
 }
 
 
