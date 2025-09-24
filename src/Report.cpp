@@ -30,7 +30,7 @@ void Report::setElapsedTime(double seconds)
 void Report::printReport()
 {
 	std::cout << "\n===== SCAN REPORT =====\n";
-	std::cout << "Total files processed: " << totalFiles.load() << "\n";//load явно чиатет атомарные значения
+	std::cout << "Total files processed: " << totalFiles.load() << "\n";//load явно чиатем атомарне значения
 	std::cout << "Infected files found: " << infectedFiles.load() << "\n";
 	std::cout << "Healthy files found: " << healthyFiles.load() << "\n";
 	std::cout << "Errors encountered: " << errors.load() << "\n";
@@ -48,3 +48,23 @@ Report::Report(Report&& other) noexcept : totalFiles(other.totalFiles.load())
 , errors(other.errors.load())
 , elapsedTime(other.elapsedTime)
 {}
+
+int Report::getTotalFiles()
+{
+	return totalFiles;
+}
+
+int Report::getInfectedFiles()
+{
+	return infectedFiles;
+}
+
+
+int Report::getHealthyFiles()
+{
+	return healthyFiles;
+}
+int Report::getErrors()
+{
+	return errors;
+}

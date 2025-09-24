@@ -14,7 +14,7 @@ Logger::Logger(const std::string& filename)
 void Logger::logDetection(const std::string& file_path, const std::string& hash, const std::string& verdict)
 {
     std::lock_guard<std::mutex> lock(log_mutex);
-    auto now = std::chrono::system_clock::now();//не потокобезопасно
+    auto now = std::chrono::system_clock::now();//не потокобезопасно, поэтому беру весь метод в mutex, с остальными методами также 
     auto time_t = std::chrono::system_clock::to_time_t(now);
 
     char buffer[80];
@@ -29,7 +29,7 @@ void Logger::logDetection(const std::string& file_path, const std::string& hash,
             << std::endl;
     }
     catch (const std::ios_base::failure& e) {
-        // Диск переполнен, нет прав записи и т.д.
+        // может произойти, если диск переполен, нет прав записи или ещё что то такое
         throw std::ios_base::failure("Ошибка записи в лог: " + std::string(e.what()));
     }
 }
@@ -50,7 +50,7 @@ void Logger::logError(const std::string& error)
         << std::endl;
 }
     catch (const std::ios_base::failure& e) {
-        // Диск переполнен, нет прав записи и т.д.
+        // может произойти, если диск переполен, нет прав записи или ещё что то такое
         throw std::ios_base::failure("Ошибка записи в лог: " + std::string(e.what()));
     }
 }
@@ -71,7 +71,7 @@ void Logger::logInfo(const std::string& message)
         << std::endl;
 }
     catch (const std::ios_base::failure& e) {
-        // Диск переполнен, нет прав записи и т.д.
+        // может произойти, если диск переполен, нет прав записи или ещё что то такое
         throw std::ios_base::failure("Ошибка записи в лог: " + std::string(e.what()));
     }
 }

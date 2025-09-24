@@ -16,7 +16,7 @@ project(scanner)#имя проекта
 add_executable(scanner_exe src/testTask.cpp )#имя исполняемого файла
 
 
-# === GoogleTest через FetchContent ===
+# GoogleTest подключаю
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -64,12 +64,6 @@ find_package(OpenSSL REQUIRED)
 target_link_libraries(scanner_library OpenSSL::Crypto)
 target_link_libraries(scanner_exe PRIVATE scanner_library)
 
-# === ТЕСТЫ ===
-# Тестовая библиотека (статическая) для тестирования DLL
-
-
-
-
 
 # Исполняемый файл для тестов
 add_executable(scanner_tests
@@ -80,7 +74,7 @@ add_executable(scanner_tests
 )
 
 
-# КРИТИЧЕСКИ ВАЖНОЕ ИСПРАВЛЕНИЕ:
+
 # 1. Подключаем заголовочные файлы
 target_include_directories(scanner_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 # 2. ПРАВИЛЬНО линкуем тесты
@@ -91,10 +85,10 @@ target_link_libraries(scanner_tests
     OpenSSL::Crypto   # Если тесты используют хеширование
 )
 
-# Включить поддержку GoogleTest и регистрируем тесты
+
 include(GoogleTest)
 gtest_discover_tests(scanner_tests)
 
-# Включить поддержку GoogleTest
+
 include(GoogleTest)
 gtest_discover_tests(scanner_tests)

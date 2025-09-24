@@ -1,0 +1,121 @@
+\doxysection{Класс Report}
+\hypertarget{class_report}{}\label{class_report}\index{Report@{Report}}
+
+
+Класс для сбора и отображения статистики сканирования.  
+
+
+
+
+{\ttfamily \#include $<$Report.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_report_af36d9a9fd37cbde87550a41bf2876fe2}\label{class_report_af36d9a9fd37cbde87550a41bf2876fe2} 
+void {\bfseries add\+File\+Processed} ()
+\begin{DoxyCompactList}\small\item\em Увеличивает счетчик обработанных файлов на 1. \end{DoxyCompactList}\item 
+\Hypertarget{class_report_aac946350c5a68eabb8cde30e71e34c52}\label{class_report_aac946350c5a68eabb8cde30e71e34c52} 
+void {\bfseries add\+Infected} ()
+\begin{DoxyCompactList}\small\item\em Увеличивает счетчик зараженных файлов на 1. \end{DoxyCompactList}\item 
+\Hypertarget{class_report_a2e4adab93eb5758c01c7e9b15189ae49}\label{class_report_a2e4adab93eb5758c01c7e9b15189ae49} 
+void {\bfseries add\+Healthy} ()
+\begin{DoxyCompactList}\small\item\em Увеличивает счетчик чистых файлов на 1. \end{DoxyCompactList}\item 
+\Hypertarget{class_report_a3503fac691eb4ce848ac59f0eee09941}\label{class_report_a3503fac691eb4ce848ac59f0eee09941} 
+void {\bfseries add\+Error} ()
+\begin{DoxyCompactList}\small\item\em Увеличивает счетчик ошибок на 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_report_a67b26c288d0c6ba31e3c183458f6a040}{set\+Elapsed\+Time}} (double seconds)
+\begin{DoxyCompactList}\small\item\em Устанавливает время выполнения сканирования. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_report_a5ae9f5b055b4dd31b83f96fa95a929e5}{print\+Report}} ()
+\begin{DoxyCompactList}\small\item\em Выводит итоговый отчет сканирования в консоль. \end{DoxyCompactList}\item 
+\Hypertarget{class_report_ae3150817fcf4ebf814358baf5bd72e8f}\label{class_report_ae3150817fcf4ebf814358baf5bd72e8f} 
+{\bfseries Report} ()
+\begin{DoxyCompactList}\small\item\em Конструктор по умолчанию. Инициализирует все счетчики нулевыми значениями. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_report_af1174f713b0421c12c955a245ddb04ef}{Report}} (\mbox{\hyperlink{class_report}{Report}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em Конструктор перемещения. \end{DoxyCompactList}\item 
+\Hypertarget{class_report_a11748539dc7a842a37b728a6b1092464}\label{class_report_a11748539dc7a842a37b728a6b1092464} 
+int {\bfseries get\+Total\+Files} ()
+\item 
+\Hypertarget{class_report_a8eec352c50e96dbbc28f63828d0a5dcb}\label{class_report_a8eec352c50e96dbbc28f63828d0a5dcb} 
+int {\bfseries get\+Infected\+Files} ()
+\item 
+\Hypertarget{class_report_acd6abc230446f5818bdb48f68a6256eb}\label{class_report_acd6abc230446f5818bdb48f68a6256eb} 
+int {\bfseries get\+Healthy\+Files} ()
+\item 
+\Hypertarget{class_report_a58fc207f09db3cdf9c1c9a81d36e5561}\label{class_report_a58fc207f09db3cdf9c1c9a81d36e5561} 
+int {\bfseries get\+Errors} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для сбора и отображения статистики сканирования. 
+
+Класс предоставляет потокобезопасные методы для накопления статистики в процессе сканирования файлов и вывода итогового отчета. Все счетчики реализованы как атомарные переменные для безопасного использования в многопоточной среде. 
+
+\label{doc-constructors}
+\Hypertarget{class_report_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_report_af1174f713b0421c12c955a245ddb04ef}\index{Report@{Report}!Report@{Report}}
+\index{Report@{Report}!Report@{Report}}
+\doxysubsubsection{\texorpdfstring{Report()}{Report()}}
+{\footnotesize\ttfamily \label{class_report_af1174f713b0421c12c955a245ddb04ef} 
+Report\+::\+Report (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_report}{Report}} \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Конструктор перемещения. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{in}}  & {\em other} & Объект \doxylink{class_report}{Report} для перемещения.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Заметки}
+Гарантирует noexcept для безопасного использования в контейнерах STL. 
+\end{DoxyNote}
+
+
+\label{doc-func-members}
+\Hypertarget{class_report_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_report_a5ae9f5b055b4dd31b83f96fa95a929e5}\index{Report@{Report}!printReport@{printReport}}
+\index{printReport@{printReport}!Report@{Report}}
+\doxysubsubsection{\texorpdfstring{printReport()}{printReport()}}
+{\footnotesize\ttfamily \label{class_report_a5ae9f5b055b4dd31b83f96fa95a929e5} 
+void Report\+::print\+Report (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Выводит итоговый отчет сканирования в консоль. 
+
+Формат вывода\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=====\ SCAN\ REPORT\ =====}
+\DoxyCodeLine{Total\ files\ processed:\ 150}
+\DoxyCodeLine{Infected\ files\ found:\ 3}
+\DoxyCodeLine{Healthy\ files\ found:\ 147}
+\DoxyCodeLine{Errors\ encountered:\ 2}
+\DoxyCodeLine{Time\ elapsed:\ 12.34\ seconds}
+
+\end{DoxyCode}
+ \Hypertarget{class_report_a67b26c288d0c6ba31e3c183458f6a040}\index{Report@{Report}!setElapsedTime@{setElapsedTime}}
+\index{setElapsedTime@{setElapsedTime}!Report@{Report}}
+\doxysubsubsection{\texorpdfstring{setElapsedTime()}{setElapsedTime()}}
+{\footnotesize\ttfamily \label{class_report_a67b26c288d0c6ba31e3c183458f6a040} 
+void Report\+::set\+Elapsed\+Time (\begin{DoxyParamCaption}\item[{double}]{seconds}{}\end{DoxyParamCaption})}
+
+
+
+Устанавливает время выполнения сканирования. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{in}}  & {\em seconds} & Время выполнения в секундах. \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Project/src/Report.\+h\item 
+Project/src/Report.\+cpp\end{DoxyCompactItemize}

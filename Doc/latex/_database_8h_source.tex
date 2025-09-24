@@ -1,0 +1,28 @@
+\doxysection{Database.\+h}
+\hypertarget{_database_8h_source}{}\label{_database_8h_source}\index{Project/src/Database.h@{Project/src/Database.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DATABASE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DATABASE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_database_a5f8c545125372ea08993c724e4152c87}{Database}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_database_a5f8c545125372ea08993c724e4152c87}{Database}}(\textcolor{keyword}{const}\ std::string\&\ csvFilePath);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ \mbox{\hyperlink{class_database_afc9872234bd7addf49c8f408936318ff}{getVerdict}}(std::string\ hash);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ load(\textcolor{keyword}{const}\ std::string\&\ csvFilePath);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ maliciousHashes;\ }
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !DATABASE\_H}}
+
+\end{DoxyCode}

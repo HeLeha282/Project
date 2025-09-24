@@ -10,7 +10,7 @@ FileHandler::FileHandler(Database& base, Logger& logger, Report& report) : datab
 void FileHandler::processFile(const std::string& filePath)
 {
    
-    //Если не получится открыть то и хеш не посчитаем
+    //ксли не получится открыть то и хеш не посчитаем
     report.addFileProcessed();//добавляем "всего обработнных файлов"
     std::ifstream file(filePath, std::ios::binary);
     if (!file.is_open()) {

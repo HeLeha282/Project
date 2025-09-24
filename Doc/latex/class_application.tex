@@ -1,0 +1,75 @@
+\doxysection{Класс Application}
+\hypertarget{class_application}{}\label{class_application}\index{Application@{Application}}
+
+
+Основной класс приложения-\/сканера.  
+
+
+
+
+{\ttfamily \#include $<$Application.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_report}{Report}} \mbox{\hyperlink{class_application_a214b296f3c9a4ba294bb12a68bb5e032}{run}} (const std\+::string \&base, const std\+::string \&log, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Запускает процесс сканирования файловой системы. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Основной класс приложения-\/сканера. 
+
+Класс предоставляет точку входа для запуска процесса сканирования файловой системы на наличие вредоносных файлов с использованием базы хэшей и логирования результатов.
+
+\begin{DoxySeeAlso}{См. также}
+\doxylink{class_database}{Database} 
+
+\doxylink{class_logger}{Logger} 
+
+\doxylink{class_directory_scanner}{Directory\+Scanner} 
+
+\doxylink{class_report}{Report} 
+\end{DoxySeeAlso}
+
+
+\label{doc-func-members}
+\Hypertarget{class_application_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_application_a214b296f3c9a4ba294bb12a68bb5e032}\index{Application@{Application}!run@{run}}
+\index{run@{run}!Application@{Application}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{class_application_a214b296f3c9a4ba294bb12a68bb5e032} 
+\mbox{\hyperlink{class_report}{Report}} Application\+::run (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{base}{, }\item[{const std\+::string \&}]{log}{, }\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Запускает процесс сканирования файловой системы. 
+
+Метод инициализирует необходимые компоненты (базу данных, логгер, сканер), запускает рекурсивное сканирование указанной директории и возвращает отчёт о выполнении.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em base} & Путь к CSV-\/файлу с базой вредоносных хэшей. \\
+\hline
+{\em log} & Путь к файлу для записи логов. \\
+\hline
+{\em path} & Путь к корневой директории для сканирования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+\doxylink{class_report}{Report} Объект с результатами сканирования (количество файлов, ошибок, время и т.\+д.).
+\end{DoxyReturn}
+\begin{DoxyNote}{Заметки}
+Возвращаемый объект \doxylink{class_report}{Report} создаётся непосредственно в return-\/выражении с применением RVO (Return Value Optimization) для избежания лишнего копирования.
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если не удалось открыть файлы базы или лога, или если указанная директория недоступна. \\
+\hline
+\end{DoxyExceptions}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Project/src/Application.\+h\item 
+Project/src/Application.\+cpp\end{DoxyCompactItemize}

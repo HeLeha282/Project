@@ -15,7 +15,7 @@ void Database::load(const std::string& csvFilePath)
 		throw std::runtime_error("CSV файл не существует: " + csvFilePath);
 	}
 
-	// Проверка что это обычный файл
+	// проверка что это обычый файл
 	if (!std::filesystem::is_regular_file(csvFilePath)) {
 		throw std::runtime_error("Путь не является файлом: " + csvFilePath);
 	}
@@ -23,7 +23,7 @@ void Database::load(const std::string& csvFilePath)
 	std::ifstream inf(csvFilePath);
 
 	if (!inf.is_open()) {
-		// Проверяем код ошибки для более точного сообщения
+		// проверем код ошибки для боле точного сообщения
 		if (errno == EACCES) {
 			throw std::runtime_error("Недостаточно прав для чтения файла: " + csvFilePath);
 		}
@@ -36,7 +36,7 @@ void Database::load(const std::string& csvFilePath)
 	std::string hash;
 	std::string verdict;
 	while (std::getline(inf, line)) {
-		if (line.empty()) continue; // Пропускаем пустые строки
+		if (line.empty()) continue; 
 		delimiterPos = line.find(';');
 		if (delimiterPos == std::string::npos) {
 			throw std::runtime_error("Некорректный формат CSV файла: " + line);

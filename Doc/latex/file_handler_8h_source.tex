@@ -1,0 +1,30 @@
+\doxysection{file\+Handler.\+h}
+\hypertarget{file_handler_8h_source}{}\label{file_handler_8h_source}\index{Project/src/fileHandler.h@{Project/src/fileHandler.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FILE\_HANDLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FILE\_HANDLER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Database.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Logger.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Report.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_file_handler_a002d7b9a87f96f5c1b95eb010c0370df}{FileHandler}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_file_handler_a002d7b9a87f96f5c1b95eb010c0370df}{FileHandler}}(\mbox{\hyperlink{class_database}{Database}}\&\ base,\ \mbox{\hyperlink{class_logger}{Logger}}\&\ logger,\ \mbox{\hyperlink{class_report}{Report}}\&\ report);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_file_handler_afe18c3ce66c5a692f1b892021b74cdfa}{processFile}}(\textcolor{keyword}{const}\ std::string\&\ filePath);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_database}{Database}}\&\ database;\ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}\&\ logger;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_report}{Report}}\&\ report;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !FILE\_HANDLER\_H}}
+
+\end{DoxyCode}

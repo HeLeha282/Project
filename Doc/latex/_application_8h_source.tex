@@ -1,0 +1,25 @@
+\doxysection{Application.\+h}
+\hypertarget{_application_8h_source}{}\label{_application_8h_source}\index{Project/src/Application.h@{Project/src/Application.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ APPLICATION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ APPLICATION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Report.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Макрос\ для\ экспорта/импорта}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_application}{Application}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_report}{Report}}\ \mbox{\hyperlink{class_application_a214b296f3c9a4ba294bb12a68bb5e032}{run}}(\textcolor{keyword}{const}\ std::string\&\ base,\ \textcolor{keyword}{const}\ std::string\&\ log,\ \textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !APPLICATION\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,58 @@
+\doxysection{C\+:/\+Users/\+Lesha/\+Desktop/\+Test\+Task\+Kaspersky/\+Project/src/\+Application.\+h}
+\hypertarget{_c_1_2_users_2_lesha_2_desktop_2_test_task_kaspersky_2_project_2src_2_application_8h-example}{}\label{_c_1_2_users_2_lesha_2_desktop_2_test_task_kaspersky_2_project_2src_2_application_8h-example}Запускает процесс сканирования файловой системы.
+
+Запускает процесс сканирования файловой системы.\+Метод инициализирует необходимые компоненты (базу данных, логгер, сканер), запускает рекурсивное сканирование указанной директории и возвращает отчёт о выполнении.
+
+
+\begin{DoxyParams}{Parameters}
+{\em base} & Путь к CSV-\/файлу с базой вредоносных хэшей. \\
+\hline
+{\em log} & Путь к файлу для записи логов. \\
+\hline
+{\em path} & Путь к корневой директории для сканирования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_report}{Report} Объект с результатами сканирования (количество файлов, ошибок, время и т.\+д.).
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Возвращаемый объект \doxylink{class_report}{Report} создаётся непосредственно в return-\/выражении с применением RVO (Return Value Optimization) для избежания лишнего копирования.
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & Если не удалось открыть файлы базы или лога, или если указанная директория недоступна.\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_application}{Application}}\ app;}
+\DoxyCodeLine{\mbox{\hyperlink{class_report}{Report}}\ report\ =\ app.run(\textcolor{stringliteral}{"{}malware.csv"{}},\ \textcolor{stringliteral}{"{}scan.log"{}},\ \textcolor{stringliteral}{"{}C:/Users/Test"{}});}
+\DoxyCodeLine{report.printReport();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ APPLICATION\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ APPLICATION\_H}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Report.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Макрос для\ экспорта/импорта}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_application}{Application}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ Report\ run(\textcolor{keyword}{const}\ std::string\&\ base,\ \textcolor{keyword}{const}\ std::string\&\ log,\ \textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !APPLICATION\_H}}
+
+\end{DoxyCodeInclude}
+ 

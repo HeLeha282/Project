@@ -1,0 +1,94 @@
+\doxysection{Класс Directory\+Scanner}
+\hypertarget{class_directory_scanner}{}\label{class_directory_scanner}\index{DirectoryScanner@{DirectoryScanner}}
+
+
+Класс для рекурсивного сканирования директорий и проверки файлов.  
+
+
+
+
+{\ttfamily \#include $<$Directory\+Scanner.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_directory_scanner_a89df7a3ba7428b9dfb021504dd01c306}{Directory\+Scanner}} (\mbox{\hyperlink{class_database}{Database}} \&base, \mbox{\hyperlink{class_logger}{Logger}} \&logger, \mbox{\hyperlink{class_report}{Report}} \&report)
+\begin{DoxyCompactList}\small\item\em Конструктор сканера. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_directory_scanner_a52540b238a008b596cfe453bd1abac87}{scan}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Запускает рекурсивное сканирование указанной директории. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для рекурсивного сканирования директорий и проверки файлов. 
+
+Осуществляет многопоточное сканирование файловой системы, проверяя файлы на наличие в базе вредоносных хэшей. Для каждого файла создается \doxylink{class_file_handler}{File\+Handler} в отдельном потоке.
+
+\begin{DoxySeeAlso}{См. также}
+\doxylink{class_database}{Database} 
+
+\doxylink{class_logger}{Logger} 
+
+\doxylink{class_report}{Report} 
+
+\doxylink{class_file_handler}{File\+Handler} 
+\end{DoxySeeAlso}
+
+
+\label{doc-constructors}
+\Hypertarget{class_directory_scanner_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_directory_scanner_a89df7a3ba7428b9dfb021504dd01c306}\index{DirectoryScanner@{DirectoryScanner}!DirectoryScanner@{DirectoryScanner}}
+\index{DirectoryScanner@{DirectoryScanner}!DirectoryScanner@{DirectoryScanner}}
+\doxysubsubsection{\texorpdfstring{DirectoryScanner()}{DirectoryScanner()}}
+{\footnotesize\ttfamily \label{class_directory_scanner_a89df7a3ba7428b9dfb021504dd01c306} 
+Directory\+Scanner\+::\+Directory\+Scanner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{base}{, }\item[{\mbox{\hyperlink{class_logger}{Logger}} \&}]{logger}{, }\item[{\mbox{\hyperlink{class_report}{Report}} \&}]{report}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор сканера. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em base} & Ссылка на базу данных вредоносных хэшей. \\
+\hline
+{\em logger} & Ссылка на логгер для записи событий. \\
+\hline
+{\em report} & Ссылка на отчет для сбора статистики. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_directory_scanner_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_directory_scanner_a52540b238a008b596cfe453bd1abac87}\index{DirectoryScanner@{DirectoryScanner}!scan@{scan}}
+\index{scan@{scan}!DirectoryScanner@{DirectoryScanner}}
+\doxysubsubsection{\texorpdfstring{scan()}{scan()}}
+{\footnotesize\ttfamily \label{class_directory_scanner_a52540b238a008b596cfe453bd1abac87} 
+void Directory\+Scanner\+::scan (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Запускает рекурсивное сканирование указанной директории. 
+
+Проверяет доступность директории, затем запускает многопоточное сканирование всех вложенных файлов и папок.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em path} & Путь к корневой директории для сканирования.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если директория не существует, недоступна или произошла ошибка во время сканирования.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Заметки}
+Ошибки доступа к отдельным файлам/папкам логируются, но не прерывают сканирование. 
+\end{DoxyNote}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Project/src/Directory\+Scanner.\+h\item 
+Project/src/Directory\+Scanner.\+cpp\end{DoxyCompactItemize}

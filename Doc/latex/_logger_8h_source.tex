@@ -1,0 +1,35 @@
+\doxysection{Logger.\+h}
+\hypertarget{_logger_8h_source}{}\label{_logger_8h_source}\index{Project/src/Logger.h@{Project/src/Logger.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LOGGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LOGGER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15}{Logger}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00026\ \ \ \ \ std::ofstream\ log\_file;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ std::mutex\ log\_mutex;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15}{Logger}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ logDetection(\textcolor{keyword}{const}\ std::string\&\ file\_path,\ \textcolor{keyword}{const}\ std::string\&\ hash,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ verdict);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ logError(\textcolor{keyword}{const}\ std::string\&\ error);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ logInfo(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15}{\string~Logger}}();}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !LOGGER\_H}}
+
+\end{DoxyCode}

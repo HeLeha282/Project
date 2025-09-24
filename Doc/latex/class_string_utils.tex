@@ -1,0 +1,62 @@
+\doxysection{Класс String\+Utils}
+\hypertarget{class_string_utils}{}\label{class_string_utils}\index{StringUtils@{StringUtils}}
+
+
+Класс, предоставляющий статические утилиты для обработки строк.  
+
+
+
+
+{\ttfamily \#include $<$String\+Utils.\+h$>$}
+
+\doxysubsubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{class_string_utils_ab4cbc55bad618b2b73c89d4c3e63230d}{trim}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Удаляет пробельные символы в начале и конце строки. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс, предоставляющий статические утилиты для обработки строк. 
+
+Этот класс содержит набор статических методов, выполняющих распространённые операции со строками. В текущей реализации предоставляет функцию удаления пробельных символов. 
+
+\label{doc-func-members}
+\Hypertarget{class_string_utils_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_string_utils_ab4cbc55bad618b2b73c89d4c3e63230d}\index{StringUtils@{StringUtils}!trim@{trim}}
+\index{trim@{trim}!StringUtils@{StringUtils}}
+\doxysubsubsection{\texorpdfstring{trim()}{trim()}}
+{\footnotesize\ttfamily \label{class_string_utils_ab4cbc55bad618b2b73c89d4c3e63230d} 
+std\+::string String\+Utils\+::trim (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Удаляет пробельные символы в начале и конце строки. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Входная строка, которую необходимо обработать. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Обрезанная копия строки без пробельных символов по краям. Если строка состоит только из пробельных символов, возвращает пустую строку.
+\end{DoxyReturn}
+Пробельными символами считаются\+: пробел, табуляция ({\ttfamily \textbackslash{}t}), новая строка ({\ttfamily \textbackslash{}n}), возврат каретки ({\ttfamily \textbackslash{}r}), прогон страницы ({\ttfamily \textbackslash{}f}) и вертикальная табуляция ({\ttfamily \textbackslash{}v}).
+
+\begin{DoxyNote}{Заметки}
+Это дополнительная служебная функция, используемая для предобработки данных, например, при чтении строк из CSV-\/файла.
+\end{DoxyNote}
+Пример использования\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::string\ original\ =\ \textcolor{stringliteral}{"{}\ \ \ Hello,\ World!\ \ \ "{}};}
+\DoxyCodeLine{std::string\ trimmed\ =\ \mbox{\hyperlink{class_string_utils_ab4cbc55bad618b2b73c89d4c3e63230d}{StringUtils::trim}}(original);}
+\DoxyCodeLine{\textcolor{comment}{//\ Результат:\ "{}Hello,\ World!"{}}}
+
+\end{DoxyCode}
+ 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Project/src/\mbox{\hyperlink{_string_utils_8h}{String\+Utils.\+h}}\item 
+Project/src/String\+Utils.\+cpp\end{DoxyCompactItemize}

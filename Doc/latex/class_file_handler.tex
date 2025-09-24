@@ -1,0 +1,98 @@
+\doxysection{Класс File\+Handler}
+\hypertarget{class_file_handler}{}\label{class_file_handler}\index{FileHandler@{FileHandler}}
+
+
+Класс для обработки отдельных файлов.  
+
+
+
+
+{\ttfamily \#include $<$file\+Handler.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_file_handler_a002d7b9a87f96f5c1b95eb010c0370df}{File\+Handler}} (\mbox{\hyperlink{class_database}{Database}} \&base, \mbox{\hyperlink{class_logger}{Logger}} \&logger, \mbox{\hyperlink{class_report}{Report}} \&report)
+\begin{DoxyCompactList}\small\item\em Конструктор обработчика файлов. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_file_handler_afe18c3ce66c5a692f1b892021b74cdfa}{process\+File}} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Обрабатывает один файл\+: вычисляет хэш и проверяет на вредоносность. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для обработки отдельных файлов. 
+
+Отвечает за вычисление хэша файла, проверку его в базе вредоносных хэшей и обновление статистики в отчете. Каждый экземпляр используется для обработки одного файла.
+
+\begin{DoxySeeAlso}{См. также}
+\doxylink{class_database}{Database} 
+
+\doxylink{class_logger}{Logger} 
+
+\doxylink{class_report}{Report} 
+
+\doxylink{class_hash_calculator}{Hash\+Calculator} 
+\end{DoxySeeAlso}
+
+
+\label{doc-constructors}
+\Hypertarget{class_file_handler_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_file_handler_a002d7b9a87f96f5c1b95eb010c0370df}\index{FileHandler@{FileHandler}!FileHandler@{FileHandler}}
+\index{FileHandler@{FileHandler}!FileHandler@{FileHandler}}
+\doxysubsubsection{\texorpdfstring{FileHandler()}{FileHandler()}}
+{\footnotesize\ttfamily \label{class_file_handler_a002d7b9a87f96f5c1b95eb010c0370df} 
+File\+Handler\+::\+File\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{base}{, }\item[{\mbox{\hyperlink{class_logger}{Logger}} \&}]{logger}{, }\item[{\mbox{\hyperlink{class_report}{Report}} \&}]{report}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор обработчика файлов. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em base} & Ссылка на базу данных вредоносных хэшей. \\
+\hline
+{\em logger} & Ссылка на логгер для записи событий. \\
+\hline
+{\em report} & Ссылка на отчет для сбора статистики. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_file_handler_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_file_handler_afe18c3ce66c5a692f1b892021b74cdfa}\index{FileHandler@{FileHandler}!processFile@{processFile}}
+\index{processFile@{processFile}!FileHandler@{FileHandler}}
+\doxysubsubsection{\texorpdfstring{processFile()}{processFile()}}
+{\footnotesize\ttfamily \label{class_file_handler_afe18c3ce66c5a692f1b892021b74cdfa} 
+void File\+Handler\+::process\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Обрабатывает один файл\+: вычисляет хэш и проверяет на вредоносность. 
+
+Метод выполняет последовательно\+:
+\begin{DoxyEnumerate}
+\item Увеличивает счетчик обработанных файлов
+\item Открывает файл в бинарном режиме
+\item Вычисляет MD5-\/хэш содержимого
+\item Проверяет хэш в базе данных
+\item Обновляет статистику и логирует результат
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Аргументы}
+{\em file\+Path} & Полный путь к обрабатываемому файлу.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Заметки}
+При ошибке открытия файла увеличивается счетчик ошибок и запись добавляется в лог. 
+
+Файлы большого размера обрабатываются потоково без загрузки в память целиком. 
+\end{DoxyNote}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Project/src/file\+Handler.\+h\item 
+Project/src/File\+Handler.\+cpp\end{DoxyCompactItemize}

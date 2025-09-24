@@ -1,0 +1,86 @@
+\doxysection{Класс Logger}
+\hypertarget{class_logger}{}\label{class_logger}\index{Logger@{Logger}}
+
+
+Класс для потокобезопасного логирования в файл.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15}{Logger}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_logger}{Logger}. \end{DoxyCompactList}\item 
+\Hypertarget{class_logger_afd0aa3e5072f7ed8acb4c9be2c8b7408}\label{class_logger_afd0aa3e5072f7ed8acb4c9be2c8b7408} 
+void {\bfseries log\+Detection} (const std\+::string \&file\+\_\+path, const std\+::string \&hash, const std\+::string \&verdict)
+\item 
+\Hypertarget{class_logger_a67f936e41d7d39b6dbe7897257652742}\label{class_logger_a67f936e41d7d39b6dbe7897257652742} 
+void {\bfseries log\+Error} (const std\+::string \&error)
+\item 
+\Hypertarget{class_logger_a3b2e97470572358030fa427c649cf8d5}\label{class_logger_a3b2e97470572358030fa427c649cf8d5} 
+void {\bfseries log\+Info} (const std\+::string \&message)
+\item 
+\mbox{\hyperlink{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}{\texorpdfstring{$\sim$}{\string~}\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \doxylink{class_logger}{Logger}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для потокобезопасного логирования в файл. 
+
+Класс предоставляет методы для записи различных типов сообщений в лог-\/файл\+:
+\begin{DoxyItemize}
+\item Обнаружение вредоносных файлов
+\item Ошибки при работе утилиты
+\item Информационные сообщения
+\end{DoxyItemize}
+
+Все операции записи защищены мьютексом для корректной работы в многопоточной среде. Формат записи\+: \mbox{[}ТИП\mbox{]} ВРЕМЯ \texorpdfstring{$\vert$}{|} Дополнительная информация \begin{Desc}
+\item[Примеры]\par
+\mbox{\hyperlink{_c_1_2_users_2_lesha_2_desktop_2_test_task_kaspersky_2_project_2src_2_logger_8h-example}{C\+:/\+Users/\+Lesha/\+Desktop/\+Test\+Task\+Kaspersky/\+Project/src/\+Logger.\+h}}.\end{Desc}
+
+
+\label{doc-constructors}
+\Hypertarget{class_logger_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15}\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
+{\footnotesize\ttfamily \label{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15} 
+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \doxylink{class_logger}{Logger}. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{in}}  & {\em filename} & Путь к файлу для записи логов. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если не удалось открыть файл для записи. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}\index{Logger@{Logger}!````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}}
+\index{````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Logger()}{\string~Logger()}}
+{\footnotesize\ttfamily \label{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a} 
+Logger\+::\texorpdfstring{$\sim$}{\string~}\+Logger (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор класса \doxylink{class_logger}{Logger}. 
+
+\begin{DoxyNote}{Заметки}
+Автоматически закрывает файловый поток, если он открыт. 
+\end{DoxyNote}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Project/src/Logger.\+h\item 
+Project/src/Logger.\+cpp\end{DoxyCompactItemize}

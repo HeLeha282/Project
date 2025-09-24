@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ScannerUtilit: Исходный файл Project/src/Report.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ScannerUtilit<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_report_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Report.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef REPORT_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define REPORT_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifdef SCANNER_LIBRARY_EXPORTS</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define SCANNER_API __declspec(dllexport)</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define SCANNER_API __declspec(dllimport)</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;atomic&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span></div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_report.html">   20</a></span><span class="keyword">class </span>SCANNER_API <a class="code hl_function" href="class_report.html#ae3150817fcf4ebf814358baf5bd72e8f">Report</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_report.html#af36d9a9fd37cbde87550a41bf2876fe2">addFileProcessed</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_report.html#aac946350c5a68eabb8cde30e71e34c52">addInfected</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_report.html#a2e4adab93eb5758c01c7e9b15189ae49">addHealthy</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_report.html#a3503fac691eb4ce848ac59f0eee09941">addError</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_report.html#a67b26c288d0c6ba31e3c183458f6a040">setElapsedTime</a>(<span class="keywordtype">double</span> seconds);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_report.html#a5ae9f5b055b4dd31b83f96fa95a929e5">printReport</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="class_report.html#ae3150817fcf4ebf814358baf5bd72e8f">Report</a>();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_function" href="class_report.html#ae3150817fcf4ebf814358baf5bd72e8f">Report</a>(<a class="code hl_function" href="class_report.html#ae3150817fcf4ebf814358baf5bd72e8f">Report</a>&amp;&amp; other) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">int</span> getTotalFiles();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">int</span> getInfectedFiles();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">int</span> getHealthyFiles();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">int</span> getErrors();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    std::atomic&lt;int&gt; totalFiles{ 0 };     </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    std::atomic&lt;int&gt; infectedFiles{ 0 };  </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    std::atomic&lt;int&gt; healthyFiles{ 0 };   </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    std::atomic&lt;int&gt; errors{ 0 };         </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">double</span> elapsedTime = 0.0;             </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif </span><span class="comment">// !REPORT_H</span></div>
+<div class="ttc" id="aclass_report_html_a2e4adab93eb5758c01c7e9b15189ae49"><div class="ttname"><a href="class_report.html#a2e4adab93eb5758c01c7e9b15189ae49">Report::addHealthy</a></div><div class="ttdeci">void addHealthy()</div><div class="ttdoc">Увеличивает счетчик чистых файлов на 1.</div><div class="ttdef"><b>Определения</b> Report.cpp:15</div></div>
+<div class="ttc" id="aclass_report_html_a3503fac691eb4ce848ac59f0eee09941"><div class="ttname"><a href="class_report.html#a3503fac691eb4ce848ac59f0eee09941">Report::addError</a></div><div class="ttdeci">void addError()</div><div class="ttdoc">Увеличивает счетчик ошибок на 1.</div><div class="ttdef"><b>Определения</b> Report.cpp:20</div></div>
+<div class="ttc" id="aclass_report_html_a5ae9f5b055b4dd31b83f96fa95a929e5"><div class="ttname"><a href="class_report.html#a5ae9f5b055b4dd31b83f96fa95a929e5">Report::printReport</a></div><div class="ttdeci">void printReport()</div><div class="ttdoc">Выводит итоговый отчет сканирования в консоль.</div><div class="ttdef"><b>Определения</b> Report.cpp:30</div></div>
+<div class="ttc" id="aclass_report_html_a67b26c288d0c6ba31e3c183458f6a040"><div class="ttname"><a href="class_report.html#a67b26c288d0c6ba31e3c183458f6a040">Report::setElapsedTime</a></div><div class="ttdeci">void setElapsedTime(double seconds)</div><div class="ttdoc">Устанавливает время выполнения сканирования.</div><div class="ttdef"><b>Определения</b> Report.cpp:25</div></div>
+<div class="ttc" id="aclass_report_html_aac946350c5a68eabb8cde30e71e34c52"><div class="ttname"><a href="class_report.html#aac946350c5a68eabb8cde30e71e34c52">Report::addInfected</a></div><div class="ttdeci">void addInfected()</div><div class="ttdoc">Увеличивает счетчик зараженных файлов на 1.</div><div class="ttdef"><b>Определения</b> Report.cpp:10</div></div>
+<div class="ttc" id="aclass_report_html_ae3150817fcf4ebf814358baf5bd72e8f"><div class="ttname"><a href="class_report.html#ae3150817fcf4ebf814358baf5bd72e8f">Report::Report</a></div><div class="ttdeci">Report()</div><div class="ttdoc">Конструктор по умолчанию. Инициализирует все счетчики нулевыми значениями.</div><div class="ttdef"><b>Определения</b> Report.cpp:41</div></div>
+<div class="ttc" id="aclass_report_html_af36d9a9fd37cbde87550a41bf2876fe2"><div class="ttname"><a href="class_report.html#af36d9a9fd37cbde87550a41bf2876fe2">Report::addFileProcessed</a></div><div class="ttdeci">void addFileProcessed()</div><div class="ttdoc">Увеличивает счетчик обработанных файлов на 1.</div><div class="ttdef"><b>Определения</b> Report.cpp:5</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a href="dir_ca517da7c0ff3c5dcf7de7aebdabe148.html">src</a></li><li class="navelem"><b>Report.h</b></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

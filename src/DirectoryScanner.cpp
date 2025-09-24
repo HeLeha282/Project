@@ -47,7 +47,7 @@ void DirectoryScanner::scanDirectory(const std::filesystem::path& directory)
     auto options = std::filesystem::directory_options::skip_permission_denied;
     std::vector<std::thread> threads;
 
-    const size_t maxThreads = 2;
+    const size_t maxThreads = std::thread::hardware_concurrency();
     std::atomic<size_t> activeThreads{ 0 };
     std::mutex cvMutex;
     std::condition_variable cv;
@@ -67,11 +67,11 @@ void DirectoryScanner::scanDirectory(const std::filesystem::path& directory)
                 fileHandler.processFile(path);//
             }
             catch (const std::exception& e) {
-                // Логируем ошибку, но не прерываем другие потоки
+                // не прерывая дргие потоки делаем лог
                 logger.logError("Ошибка обработки файла " + path + ": " + e.what());
             }
             activeThreads--;
-            cv.notify_one(); // Разблокируем ожидающие потоки
+            cv.notify_one(); // разблокировка ожидаюих потокв
             });
 
         }

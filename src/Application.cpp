@@ -14,6 +14,7 @@ Report Application::run(const std::string& base, const std::string& log, const s
 	Report report;
 	Database database(base);
 	Logger logger(log);
+	logger.logInfo("Utility started working");
 	DirectoryScanner scanner(database, logger, report);
 	scanner.scan(path);
 

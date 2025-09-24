@@ -1,0 +1,46 @@
+\doxysection{Report.\+h}
+\hypertarget{_report_8h_source}{}\label{_report_8h_source}\index{Project/src/Report.h@{Project/src/Report.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ REPORT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ REPORT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_report_ae3150817fcf4ebf814358baf5bd72e8f}{Report}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_report_af36d9a9fd37cbde87550a41bf2876fe2}{addFileProcessed}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_report_aac946350c5a68eabb8cde30e71e34c52}{addInfected}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_report_a2e4adab93eb5758c01c7e9b15189ae49}{addHealthy}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_report_a3503fac691eb4ce848ac59f0eee09941}{addError}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_report_a67b26c288d0c6ba31e3c183458f6a040}{setElapsedTime}}(\textcolor{keywordtype}{double}\ seconds);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_report_a5ae9f5b055b4dd31b83f96fa95a929e5}{printReport}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{class_report_ae3150817fcf4ebf814358baf5bd72e8f}{Report}}();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_report_ae3150817fcf4ebf814358baf5bd72e8f}{Report}}(\mbox{\hyperlink{class_report_ae3150817fcf4ebf814358baf5bd72e8f}{Report}}\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ getTotalFiles();}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ getInfectedFiles();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ getHealthyFiles();}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ getErrors();}
+\DoxyCodeLine{00081\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \ \ std::atomic<int>\ totalFiles\{\ 0\ \};\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ std::atomic<int>\ infectedFiles\{\ 0\ \};\ \ }
+\DoxyCodeLine{00084\ \ \ \ \ std::atomic<int>\ healthyFiles\{\ 0\ \};\ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ std::atomic<int>\ errors\{\ 0\ \};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{double}\ elapsedTime\ =\ 0.0;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !REPORT\_H}}
+
+\end{DoxyCode}

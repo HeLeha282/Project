@@ -1,0 +1,55 @@
+\doxysection{C\+:/\+Users/\+Lesha/\+Desktop/\+Test\+Task\+Kaspersky/\+Project/src/\+Hash\+Calculator.\+h}
+\hypertarget{_c_1_2_users_2_lesha_2_desktop_2_test_task_kaspersky_2_project_2src_2_hash_calculator_8h-example}{}\label{_c_1_2_users_2_lesha_2_desktop_2_test_task_kaspersky_2_project_2src_2_hash_calculator_8h-example}Вычисляет MD5-\/хеш содержимого файла.
+
+Вычисляет MD5-\/хеш содержимого файла.\+Метод читает файл блоками по 4 КБ, что позволяет обрабатывать файлы, размер которых превышает доступный объем оперативной памяти.
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{in}}  & {\em file} & Открытый файловый поток в бинарном режиме для чтения. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+std\+::string Строка с hex-\/представлением MD5-\/хеша (32 символа в нижнем регистре).
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если во время чтения файла произошла ошибка (файл недоступен или поврежден).\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Заметки}
+Файл должен быть открыт в бинарном режиме перед передачей в метод. 
+
+После вычисления хеша позиция чтения в файле будет изменена.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::ifstream\ file(\textcolor{stringliteral}{"{}example.txt"{}},\ std::ios::binary);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\ \ \ \ std::string\ hash\ =\ HashCalculator::calcHash(file);}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}MD5:\ "{}}\ <<\ hash\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ HASH\_CALCULATOR\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ HASH\_CALCULATOR\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_hash_calculator}{HashCalculator}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::string\ calcHash(std::ifstream\&\ file);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !HASH\_CALCULATOR\_H}}
+
+\end{DoxyCodeInclude}
+ 

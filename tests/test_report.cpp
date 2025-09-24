@@ -9,15 +9,16 @@ TEST(ReportTest, CountersIncrementCorrectly) {
     report.addHealthy();
     report.addError();
 
-    // ѕровер€ем через публичные методы (если добавить getters)
-    // »ли тестируем через printReport() вывод
+    ASSERT_EQ(report.getTotalFiles(), 1);
+    ASSERT_EQ(report.getInfectedFiles(), 1);
+    ASSERT_EQ(report.getHealthyFiles(), 1);
+    ASSERT_EQ(report.getErrors(), 1);
 }
 
 TEST(ReportTest, ThreadSafeIncrements) {
     Report report;
-
-    // Ёмулируем многопоточное добавление
     std::vector<std::thread> threads;
+
     for (int i = 0; i < 100; ++i) {
         threads.emplace_back([&report]() {
             report.addFileProcessed();
@@ -27,5 +28,10 @@ TEST(ReportTest, ThreadSafeIncrements) {
 
     for (auto& t : threads) t.join();
 
-    // ƒолжно быть 100 * 2 = 200
+    ASSERT_EQ(report.getTotalFiles(), 100);
+    ASSERT_EQ(report.getHealthyFiles(), 100);
+
+
+    ASSERT_EQ(report.getInfectedFiles(), 0);
+    ASSERT_EQ(report.getErrors(), 0);
 }

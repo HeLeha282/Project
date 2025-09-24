@@ -1,0 +1,22 @@
+\doxysection{Hash\+Calculator.\+h}
+\hypertarget{_hash_calculator_8h_source}{}\label{_hash_calculator_8h_source}\index{Project/src/HashCalculator.h@{Project/src/HashCalculator.h}}
+\mbox{\hyperlink{_hash_calculator_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HASH\_CALCULATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HASH\_CALCULATOR\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_hash_calculator}{HashCalculator}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ calcHash(std::ifstream\&\ file);}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !HASH\_CALCULATOR\_H}}
+
+\end{DoxyCode}

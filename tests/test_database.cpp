@@ -6,7 +6,7 @@
 class DatabaseTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        // Создаем временный CSV файл для тестов
+        // временый CSV файл для тетов
         std::ofstream file("test_hashes.csv");
         file << "hash1;Virus1\n";
         file << "hash2;Virus2\n";
@@ -14,7 +14,6 @@ protected:
     }
 
     void TearDown() override {
-        // Удаляем временный файл
         std::filesystem::remove("test_hashes.csv");
     }
 };

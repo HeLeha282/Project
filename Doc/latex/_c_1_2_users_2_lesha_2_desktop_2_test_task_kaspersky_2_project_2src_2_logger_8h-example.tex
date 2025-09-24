@@ -1,0 +1,53 @@
+\doxysection{C\+:/\+Users/\+Lesha/\+Desktop/\+Test\+Task\+Kaspersky/\+Project/src/\+Logger.\+h}
+\hypertarget{_c_1_2_users_2_lesha_2_desktop_2_test_task_kaspersky_2_project_2src_2_logger_8h-example}{}\label{_c_1_2_users_2_lesha_2_desktop_2_test_task_kaspersky_2_project_2src_2_logger_8h-example}Записывает в лог информацию об обнаружении вредоносного файла.
+
+Записывает в лог информацию об обнаружении вредоносного файла.
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{in}}  & {\em file\+\_\+path} & Путь к обнаруженному файлу. \\
+\hline
+\mbox{\texttt{in}}  & {\em hash} & MD5-\/хеш содержимого файла. \\
+\hline
+\mbox{\texttt{in}}  & {\em verdict} & Вердикт (тип угрозы) для данного хеша. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::ios\+\_\+base\+::failure} & При ошибке записи в файл.\\
+\hline
+\end{DoxyExceptions}
+Формат записи\+: \mbox{[}DETECTED\mbox{]} 2024-\/01-\/15 14\+:30\+:25 \texorpdfstring{$\vert$}{|} File\+: C\+:\textbackslash{}path\textbackslash{}to\textbackslash{}file.exe \texorpdfstring{$\vert$}{|} Hash\+: a9963513d093ffb2bc7ceb9807771ad4 \texorpdfstring{$\vert$}{|} Verdict\+: Exploit
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ LOGGER\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ LOGGER\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ SCANNER\_LIBRARY\_EXPORTS}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SCANNER\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }SCANNER\_API\ \mbox{\hyperlink{class_logger}{Logger}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \ \ \ std::ofstream\ log\_file;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::mutex\ log\_mutex;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ Logger(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ logDetection(\textcolor{keyword}{const}\ std::string\&\ file\_path,\ \textcolor{keyword}{const}\ std::string\&\ hash,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ verdict);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ logError(\textcolor{keyword}{const}\ std::string\&\ error);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ logInfo(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \string~Logger();}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !LOGGER\_H}}
+
+\end{DoxyCodeInclude}
+ 

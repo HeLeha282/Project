@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 	std::string scan_dir_path = "scan_dir_path";
 
 	for (int i = 1; i < argc; i++) {
-		std::string arg = argv[i]; // Преобразуем в std::string
+		std::string arg = argv[i]; // преобразуем в std::string
 		if (arg == "--base") {
 			//std::cout << arg << std::endl;
 			if (i + 1 < argc) {

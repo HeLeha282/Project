@@ -1,0 +1,30 @@
+\doxysection{Directory\+Scanner.\+h}
+\hypertarget{_directory_scanner_8h_source}{}\label{_directory_scanner_8h_source}\index{Project/src/DirectoryScanner.h@{Project/src/DirectoryScanner.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DIRECTORY\_SCANNER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DIRECTORY\_SCANNER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Database.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Logger.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Report.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}fileHandler.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_directory_scanner_a89df7a3ba7428b9dfb021504dd01c306}{DirectoryScanner}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_directory_scanner_a89df7a3ba7428b9dfb021504dd01c306}{DirectoryScanner}}(\mbox{\hyperlink{class_database}{Database}}\&\ base,\ \mbox{\hyperlink{class_logger}{Logger}}\&\ logger,\ \mbox{\hyperlink{class_report}{Report}}\&\ report);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_directory_scanner_a52540b238a008b596cfe453bd1abac87}{scan}}(std::string\ path);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_database}{Database}}\&\ database;\ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}\&\ logger;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_report}{Report}}\&\ report;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ canAccessDirectory(\textcolor{keyword}{const}\ std::filesystem::path\&\ dir);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ scanDirectory(\textcolor{keyword}{const}\ std::filesystem::path\&\ directory);}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !DIRECTORY\_SCANNER\_H}}
+
+\end{DoxyCode}

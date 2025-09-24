@@ -1,0 +1,80 @@
+\doxysection{Класс Database}
+\hypertarget{class_database}{}\label{class_database}\index{Database@{Database}}
+
+
+Класс для работы с базой вредоносных хэшей.  
+
+
+
+
+{\ttfamily \#include $<$Database.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_database_a5f8c545125372ea08993c724e4152c87}{Database}} (const std\+::string \&csv\+File\+Path)
+\begin{DoxyCompactList}\small\item\em Конструктор, загружающий базу из CSV-\/файла. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_database_afc9872234bd7addf49c8f408936318ff}{get\+Verdict}} (std\+::string hash)
+\begin{DoxyCompactList}\small\item\em Проверяет, содержится ли хэш в базе вредоносных. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для работы с базой вредоносных хэшей. 
+
+Загружает хэши и соответствующие им вердикты из CSV-\/файла и предоставляет интерфейс для проверки хэшей на наличие в базе. 
+
+\label{doc-constructors}
+\Hypertarget{class_database_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_database_a5f8c545125372ea08993c724e4152c87}\index{Database@{Database}!Database@{Database}}
+\index{Database@{Database}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{Database()}{Database()}}
+{\footnotesize\ttfamily \label{class_database_a5f8c545125372ea08993c724e4152c87} 
+Database\+::\+Database (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{csv\+File\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор, загружающий базу из CSV-\/файла. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em csv\+File\+Path} & Путь к CSV-\/файлу с хэшами и вердиктами.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & Если файл не существует, недоступен для чтения или имеет некорректный формат.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{См. также}
+load() 
+\end{DoxySeeAlso}
+
+
+\label{doc-func-members}
+\Hypertarget{class_database_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_database_afc9872234bd7addf49c8f408936318ff}\index{Database@{Database}!getVerdict@{getVerdict}}
+\index{getVerdict@{getVerdict}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getVerdict()}{getVerdict()}}
+{\footnotesize\ttfamily \label{class_database_afc9872234bd7addf49c8f408936318ff} 
+std\+::string Database\+::get\+Verdict (\begin{DoxyParamCaption}\item[{std\+::string}]{hash}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет, содержится ли хэш в базе вредоносных. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em hash} & MD5-\/хэш файла в виде строки (в нижнем регистре, без разделителей). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+std\+::string Вердикт из базы, если хэш найден; иначе — пустая строка. 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Project/src/Database.\+h\item 
+Project/src/Database.\+cpp\end{DoxyCompactItemize}
