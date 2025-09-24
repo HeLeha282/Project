@@ -7,7 +7,7 @@
 
 FileHandler::FileHandler(Database& base, Logger& logger, Report& report) : database(base), logger(logger), report(report) {}
 
-void FileHandler::processFile(const std::string& filePath, std::mutex& rofl_m)
+void FileHandler::processFile(const std::string& filePath)
 {
    
     //Если не получится открыть то и хеш не посчитаем
@@ -20,10 +20,10 @@ void FileHandler::processFile(const std::string& filePath, std::mutex& rofl_m)
         return;
     }
     std::string hash = HashCalculator::calcHash(file);
-    rofl_m.lock();
-    std::cout << std::this_thread::get_id() << std::endl;
-    std::cout << filePath + "\n" + hash + "\n" + "-----------------------------------------------------------------------------------------------"<<std::endl;
-    rofl_m.unlock();
+
+    /*std::cout << std::this_thread::get_id() << std::endl;
+    std::cout << filePath + "\n" + hash + "\n" + "-----------------------------------------------------------------------------------------------"<<std::endl;*/
+
     std::string verdict = database.getVerdict(hash);
     if (verdict != "") {
         report.addInfected();

@@ -8,8 +8,8 @@
 class FileHandler {
 public:
 	FileHandler(Database& base, Logger& logger, Report& report);
-	void processFile(const std::string& filePath, std::mutex& rofl_m);
-	std::mutex rofl_m;
+	void processFile(const std::string& filePath);
+
 private:
 	Database& database;
 	Logger& logger;
