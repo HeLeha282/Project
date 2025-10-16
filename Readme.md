@@ -20,10 +20,10 @@
 Необходимо собрать проект при помощи Cmake.
 Для этого необходимо при помощи cmd зайти в папку проекта
 и прописать следующие команды:
-mkdir build
-cd build
-cmake ..
-cmake --build . --config Release  
+mkdir build<br>
+cd build<br>
+cmake ..<br>
+cmake --build . --config Release <br>
 <br>
 Теперь можно запускать проект, для этого нужно перейти в папку Release
 Можно сделать это при помощи команды cd Release
