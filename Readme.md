@@ -16,5 +16,5 @@
 - OpenSSL library
 - CMake 4.1.1+
 
-##Пример запуска
+## Пример запуска
 scanner_exe.exe --base --log --path
