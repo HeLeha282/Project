@@ -15,3 +15,6 @@
 - C++17 compatible compiler
 - OpenSSL library
 - CMake 4.1.1+
+
+##Пример запуска
+scanner_exe.exe --base --log --path
